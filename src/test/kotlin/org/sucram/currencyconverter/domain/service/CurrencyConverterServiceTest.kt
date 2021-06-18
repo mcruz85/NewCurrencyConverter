@@ -18,7 +18,7 @@ class CurrencyConverterServiceTest {
 
     @Before
     fun setUp() {
-        every { rate.getRates(any(), any()) } returns mapOf("USD" to 1.191748, "BRL" to 5.968991, "JPY" to 131.301434, "EUR" to 1.0)
+        every { rate.getRates(any(), any()) } returns mapOf(Symbol.USD.toString() to 1.191748, Symbol.BRL.toString() to 5.968991, Symbol.JPY.toString() to 131.301434, Symbol.EUR.toString() to 1.0)
 
         currencyConverterService = CurrencyConverterService(rate)
     }
@@ -58,6 +58,11 @@ class CurrencyConverterServiceTest {
     @Test(expected = BusinessException::class)
     fun `should return an exception when to symbol is blank`() {
         currencyConverterService.convert(Symbol.BRL.toString(), "", 10.00)
+    }
+
+    @Test(expected = BusinessException::class)
+    fun `should return an exception when to and from currency symbols are equls`() {
+        currencyConverterService.convert(Symbol.BRL.toString(), Symbol.BRL.toString(), 10.00)
     }
 
 }
