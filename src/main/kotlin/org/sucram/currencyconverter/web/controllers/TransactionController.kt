@@ -1,13 +1,12 @@
-package org.sucram.currencyconverter.web
+package org.sucram.currencyconverter.web.controllers
 
 import io.javalin.http.Context
 import org.eclipse.jetty.http.HttpStatus
 import org.slf4j.LoggerFactory
-import org.sucram.currencyconverter.domain.Transaction
 import org.sucram.currencyconverter.domain.TransactionRequest
-import java.util.*
+import org.sucram.currencyconverter.domain.service.TransactionService
 
-class TransactionController {
+class TransactionController(private val transactionService: TransactionService) {
 
     private val logger = LoggerFactory.getLogger(this::class.java.name)
 
@@ -20,15 +19,16 @@ class TransactionController {
             .check({ !it.amount.isNaN() }, "'amount' must not be null or blank")
             .check({ it.userId != null}, "'userId' must not be null")
             .get().also { transactionRequest ->
-
-                ctx.json(Transaction(id = 1, userId = 100, originCurrency = "BRL", originAmount = 100.00, destinationCurrency = "USD", destinationAmount = 19.19, exchangeRate = 0.51, createdAt = Date())).status(HttpStatus.CREATED_201)
+                transactionService.convert(transactionRequest).apply {
+                    ctx.json(this).status(HttpStatus.CREATED_201)
+                }
             }
     }
 
     fun findByUser(ctx: Context) {
         logger.info("Received request for transactions by user ${ctx.url()}")
         val userId = ctx.queryParam<Long>("user").get()
-        ctx.json(listOf(Transaction(id = 1, userId = 100, originCurrency = "BRL", originAmount = 100.00, destinationCurrency = "USD", destinationAmount = 19.19, exchangeRate = 0.51, createdAt = Date())))
+        ctx.json(transactionService.findByUser(userId))
     }
 
 
