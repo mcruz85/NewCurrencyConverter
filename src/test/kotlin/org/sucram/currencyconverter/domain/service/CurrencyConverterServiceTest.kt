@@ -7,12 +7,11 @@ import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.sucram.currencyconverter.domain.BusinessException
-import org.sucram.currencyconverter.domain.RateableImp
 import org.sucram.currencyconverter.domain.Symbol
 
 class CurrencyConverterServiceTest {
 
-    private val rate = mockk<RateableImp>()
+    private val rate = mockk<ExchangeRatesService>()
 
     private lateinit var currencyConverterService: CurrencyConverterService
 

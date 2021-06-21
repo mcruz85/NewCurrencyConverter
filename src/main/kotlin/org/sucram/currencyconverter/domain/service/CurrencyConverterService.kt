@@ -23,14 +23,15 @@ class CurrencyConverterService(private val rateable: Rateable) {
     private fun validate(from: String,  to: String) {
         isValidSymbol(from, "from")
         isValidSymbol(to, "to")
+        if (from == to) throw BusinessException("from and to fields may not be equals")
     }
 
     private fun isValidSymbol(symbol: String, field: String): Boolean {
         return try {
-            Symbol.valueOf(symbol.toString())
+            Symbol.valueOf(symbol)
             true
         } catch (ex: IllegalArgumentException) {
-            throw BusinessException("field=$symbol is not a valid symbol")
+            throw BusinessException("$field=$symbol is not a valid symbol")
         }
     }
 }
