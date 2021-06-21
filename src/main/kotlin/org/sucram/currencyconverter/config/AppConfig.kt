@@ -5,6 +5,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.javalin.Javalin
 import io.javalin.plugin.json.JavalinJackson
 import org.eclipse.jetty.server.Server
+import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
@@ -14,6 +15,7 @@ import org.sucram.currencyconverter.web.Router
 import java.text.SimpleDateFormat
 
 
+@KoinApiExtension
 class AppConfig : KoinComponent {
 
     private val logger = LoggerFactory.getLogger(this::class.java.name)
@@ -28,7 +30,7 @@ class AppConfig : KoinComponent {
             fileProperties()
         }
         this.configureMapper()
-        val port: Int = System.getenv("PORT")?.toIntOrNull() ?: 7002
+        val port: Int = System.getenv("PORT")?.toIntOrNull() ?: 7000
         val app = Javalin.create { config ->
             config.apply { server { Server(port) } }
             config.requestLogger { ctx, executionTimeMs ->

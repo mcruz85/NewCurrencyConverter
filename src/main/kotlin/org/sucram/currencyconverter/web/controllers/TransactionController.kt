@@ -4,6 +4,7 @@ import io.javalin.http.Context
 import org.eclipse.jetty.http.HttpStatus
 import org.slf4j.LoggerFactory
 import org.sucram.currencyconverter.domain.TransactionRequest
+import org.sucram.currencyconverter.domain.TransactionsResponse
 import org.sucram.currencyconverter.domain.service.TransactionService
 
 class TransactionController(private val transactionService: TransactionService) {
@@ -28,7 +29,8 @@ class TransactionController(private val transactionService: TransactionService) 
     fun findByUser(ctx: Context) {
         logger.info("Received request for transactions by user ${ctx.url()}")
         val userId = ctx.queryParam<Long>("user").get()
-        ctx.json(transactionService.findByUser(userId))
+        val transactions = transactionService.findByUser(userId)
+        ctx.json(TransactionsResponse(transactions))
     }
 
 

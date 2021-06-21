@@ -3,11 +3,17 @@ package org.sucram.currencyconverter.domain
 import java.util.*
 
 
+
 data class TransactionRequest(
     var from: String,
     val to: String,
     val amount: Double,
     val userId: Long? = null
+)
+
+
+data class TransactionsResponse(
+    val transactions: List<Transaction>,
 )
 
 data class Transaction(
