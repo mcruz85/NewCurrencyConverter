@@ -2,7 +2,7 @@ package org.sucram.currencyconverter.domain.service
 
 import org.slf4j.LoggerFactory
 import org.sucram.currencyconverter.client.exchangeratesapi.ExchangeRatesAPIService
-import org.sucram.currencyconverter.domain.BusinessException
+import org.sucram.currencyconverter.domain.exception.BusinessException
 import org.sucram.currencyconverter.domain.Rateable
 
 class ExchangeRatesService(private val exchangeRatesAPIService: ExchangeRatesAPIService) : Rateable {

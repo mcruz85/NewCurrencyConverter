@@ -1,6 +1,6 @@
 package org.sucram.currencyconverter.domain.service
 
-import org.sucram.currencyconverter.domain.BusinessException
+import org.sucram.currencyconverter.domain.exception.BusinessException
 import org.sucram.currencyconverter.domain.Rateable
 import org.sucram.currencyconverter.domain.Symbol
 

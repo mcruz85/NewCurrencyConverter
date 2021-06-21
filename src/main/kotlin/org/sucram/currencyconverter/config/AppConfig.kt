@@ -9,6 +9,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.slf4j.LoggerFactory
+import org.sucram.currencyconverter.web.ErrorExceptionMapping
 import org.sucram.currencyconverter.web.Router
 import java.text.SimpleDateFormat
 
@@ -38,6 +39,7 @@ class AppConfig : KoinComponent {
         }
 
         router.register(app)
+        ErrorExceptionMapping.register(app)
 
         return app
     }
