@@ -38,6 +38,7 @@ dependencies {
     testImplementation "io.mockk:mockk:1.11.0"
     testImplementation "org.koin:koin-test:2.2.2"
     testCompile "junit:junit:4.12"
+    testCompile "com.mashape.unirest:unirest-java:1.4.9"
 }
 
 
