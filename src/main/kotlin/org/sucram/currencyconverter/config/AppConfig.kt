@@ -8,7 +8,7 @@ import org.eclipse.jetty.server.Server
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
-import org.sucram.currencyconverter.web.controllers.Router
+import org.sucram.currencyconverter.web.Router
 import java.text.SimpleDateFormat
 
 
