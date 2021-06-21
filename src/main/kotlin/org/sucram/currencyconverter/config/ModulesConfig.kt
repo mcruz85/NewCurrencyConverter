@@ -7,7 +7,7 @@ import org.sucram.currencyconverter.domain.Rateable
 import org.sucram.currencyconverter.domain.repository.TransactionRepository
 import org.sucram.currencyconverter.domain.service.CurrencyConverterService
 import org.sucram.currencyconverter.domain.service.TransactionService
-import org.sucram.currencyconverter.web.controllers.Router
+import org.sucram.currencyconverter.web.Router
 import org.sucram.currencyconverter.web.controllers.TransactionController
 
 object ModulesConfig {
