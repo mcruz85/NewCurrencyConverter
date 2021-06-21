@@ -8,11 +8,14 @@ import org.eclipse.jetty.server.Server
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
+import org.slf4j.LoggerFactory
 import org.sucram.currencyconverter.web.Router
 import java.text.SimpleDateFormat
 
 
 class AppConfig : KoinComponent {
+
+    private val logger = LoggerFactory.getLogger(this::class.java.name)
 
     private val router: Router by inject()
 
@@ -27,6 +30,11 @@ class AppConfig : KoinComponent {
         val port: Int = System.getenv("PORT")?.toIntOrNull() ?: 7002
         val app = Javalin.create { config ->
             config.apply { server { Server(port) } }
+            config.requestLogger { ctx, executionTimeMs ->
+                logger.info(
+                    "method=${ctx.method()}, url=${ctx.url()}, remoteHost=${ctx.req.remoteHost}, status=${ctx.res.status}, userAgent=${ctx.userAgent()}, executionTimeMs=$executionTimeMs"
+                )
+            }
         }
 
         router.register(app)
