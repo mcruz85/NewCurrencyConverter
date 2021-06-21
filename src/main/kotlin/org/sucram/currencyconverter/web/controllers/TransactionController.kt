@@ -46,7 +46,7 @@ class TransactionController(private val transactionService: TransactionService) 
         summary = "Retrieves all transactions performed by user",
         operationId = "getTransactionsByUser",
         tags = ["Transaction"],
-        pathParams = [OpenApiParam("user", Int::class, "The user ID", false, required = true)],
+        queryParams = [OpenApiParam("user", Int::class, "The user ID", false, required = true)],
         responses = [
             OpenApiResponse("200", [OpenApiContent(TransactionsResponse::class)]),
             OpenApiResponse("400", [OpenApiContent(ErrorResponse::class)])
