@@ -14,7 +14,7 @@ Implementação do convesor de moedas visando cumprir os requisitos do desafio t
 
 Nesse desafio me desafiei a seguir uma das stacks proposta na qual eu nunca havia trabalhando antes, não consegui implementar todos os itens desejáveis, mas a API está funcional.
 
-https://new-currency-converter.herokuapp.com/swagger-ui
+[swagger-ui](https://60dd34ca9ae3.ngrok.io/swagger-ui)
 
 ---
 
