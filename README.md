@@ -14,6 +14,8 @@ Implementação do convesor de moedas visando cumprir os requisitos do desafio t
 
 Nesse desafio me desafiei a seguir uma das stacks proposta na qual eu nunca havia trabalhando antes, não consegui implementar todos os itens desejáveis, mas a API está funcional.
 
+https://new-currency-converter.herokuapp.com/swagger-ui
+
 ---
 
 ### 🛠 Stack
@@ -75,7 +77,7 @@ Local
 > http://localhost:7000
 
 Heroku
-> https://jaya-currency-converter.herokuapp.com
+> https://new-currency-converter.herokuapp.com
 
 
 - **`POST /transactions`**: O endpoint deve receber `from`, `to`, `amount`  e `userId` dentro do corpo da requisição, sendo que atributos `from` e `to` devem ser as possíveis moedas (`BRL`, `USD`, `EUR`, `JPY`), para realizar a conversão.
